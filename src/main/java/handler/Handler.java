@@ -1,10 +1,15 @@
 package handler;
 
+import com.amazonaws.services.lambda.runtime.Context;
+import com.amazonaws.services.lambda.runtime.RequestHandler;
+
 /**
  * Handler class
  */
-public final class Handler {
-    public static void main(final String[] args) {
-        System.out.println("Hello World");
+public final class Handler implements RequestHandler<String, String> {
+
+    @Override
+    public String handleRequest(final String s, final Context context) {
+        return "Hello World";
     }
 }

@@ -19,6 +19,9 @@ jobs:
           release-type: simple
           #WILL NOT BE USING THIS JUST DEMONSTRATING HOW WE COULD CREATE A RELEASE
       - uses: actions/checkout@v4
+#        APPLY I NEED THIS ENV FOR TERRAFORM
+#  export AWS_ACCESS_KEY_ID="anaccesskey"
+#  export AWS_SECRET_ACCESS_KEY="asecretkey"
 #         these if statements ensure that a publication only occurs when
 #         a new release is created:
 #        if: ${{ steps.release.outputs.release_created }}
