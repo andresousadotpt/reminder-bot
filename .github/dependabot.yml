@@ -4,7 +4,15 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
+    groups:
+      maven-deps:
+        patterns:
+            - "*"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "daily"
+    groups:
+      actions-deps:
+        patterns:
+          - "*"
