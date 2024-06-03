@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/andresousadotpt/reminder-bot/compare/v1.3.0...v1.4.0) (2024-06-03)
+
+
+### Features
+
+* Added Dependabot and PR of dependabot to run CI ([#8](https://github.com/andresousadotpt/reminder-bot/issues/8)) ([d2ee2b2](https://github.com/andresousadotpt/reminder-bot/commit/d2ee2b254011531ea070cc9a47996e1aa8af1039))
+
 ## [1.3.0](https://github.com/andresousadotpt/reminder-bot/compare/v1.2.0...v1.3.0) (2024-06-03)
 
 
