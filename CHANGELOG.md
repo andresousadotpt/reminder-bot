@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/andresousadotpt/reminder-bot/compare/v1.4.2...v1.5.0) (2024-06-03)
+
+
+### Features
+
+* Add dependabot to group Pull Requests ([#19](https://github.com/andresousadotpt/reminder-bot/issues/19)) ([2509e9b](https://github.com/andresousadotpt/reminder-bot/commit/2509e9b25b2f013a15f43a3bbbe1aa4c76f7040c))
+
 ## [1.4.2](https://github.com/andresousadotpt/reminder-bot/compare/v1.4.1...v1.4.2) (2024-06-03)
 
 
