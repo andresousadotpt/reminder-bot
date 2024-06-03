@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/andresousadotpt/reminder-bot/compare/v1.0.0...v1.1.0) (2024-06-03)
+
+
+### Features
+
+* Added contributing.md, added license.md and added CI Github Action ([bd4a8ec](https://github.com/andresousadotpt/reminder-bot/commit/bd4a8ecc879a2af1f8db26bca122fbc97169ba2b))
+
 ## 1.0.0 (2024-06-03)
 
 
