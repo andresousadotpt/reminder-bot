@@ -40,3 +40,5 @@ build/
 .idea
 .idea/*
 target
+terraform/.terraform*
+terraform/terraform*
