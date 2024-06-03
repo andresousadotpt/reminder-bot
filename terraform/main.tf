@@ -48,8 +48,15 @@ resource "aws_lambda_function" "reminder_bot_lambda" {
   filename      = "${path.module}/dummy.jar"
   handler       = "handler.Handler"
   runtime       = "java21"
+
   lifecycle {
     ignore_changes = [filename]
+  }
+
+  environment {
+    variables = {
+      api_key = var.bot_token
+    }
   }
 }
 
