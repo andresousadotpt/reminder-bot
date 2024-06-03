@@ -1,10 +1,12 @@
 on:
   push:
     branches:
-      - feature/*
       - main
-      - release-please*
+  pull_request:
+    branches:
+      - feature/*
       - dependabot/*
+      - release-please*
 
 jobs:
   continuous-integration:
