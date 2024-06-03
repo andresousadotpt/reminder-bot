@@ -3,9 +3,10 @@ on:
     branches:
       - feature/*
       - main
+      - release-please*
 
 jobs:
-  ci:
+  continuous-integration:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

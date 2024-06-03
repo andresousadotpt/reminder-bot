@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/andresousadotpt/reminder-bot/compare/v1.1.0...v1.2.0) (2024-06-03)
+
+
+### Features
+
+* Added terraform for creating the lambda and the event bridge wh… ([#3](https://github.com/andresousadotpt/reminder-bot/issues/3)) ([f8d0f2f](https://github.com/andresousadotpt/reminder-bot/commit/f8d0f2f25fcb1a7868dd3d419594ef07ec88bb78))
+
 ## [1.1.0](https://github.com/andresousadotpt/reminder-bot/compare/v1.0.0...v1.1.0) (2024-06-03)
 
 
