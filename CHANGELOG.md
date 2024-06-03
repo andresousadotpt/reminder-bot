@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/andresousadotpt/reminder-bot/compare/v1.2.0...v1.3.0) (2024-06-03)
+
+
+### Features
+
+* Added Terraform Bot Token on environment variables for github actions ([#6](https://github.com/andresousadotpt/reminder-bot/issues/6)) ([779b4b6](https://github.com/andresousadotpt/reminder-bot/commit/779b4b6b6d48d934c992b077da18b8104755722f))
+
 ## [1.2.0](https://github.com/andresousadotpt/reminder-bot/compare/v1.1.0...v1.2.0) (2024-06-03)
 
 
