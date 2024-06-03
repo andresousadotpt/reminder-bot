@@ -4,6 +4,7 @@ on:
       - feature/*
       - main
       - release-please*
+      - dependabot/*
 
 jobs:
   continuous-integration:
