@@ -2,8 +2,12 @@ on:
   push:
     branches:
       - main
+      - release-please*
+      - feature/*
+      - dependabot/*
   pull_request:
     branches:
+      - main
       - feature/*
       - dependabot/*
       - release-please*
