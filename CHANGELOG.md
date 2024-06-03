@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.2](https://github.com/andresousadotpt/reminder-bot/compare/v1.4.1...v1.4.2) (2024-06-03)
+
+
+### Bug Fixes
+
+* Changed dependabot.yml location ([#17](https://github.com/andresousadotpt/reminder-bot/issues/17)) ([bde713b](https://github.com/andresousadotpt/reminder-bot/commit/bde713be6bca6a9cbccf0c08cbfdcae0610e33b3))
+
 ## [1.4.1](https://github.com/andresousadotpt/reminder-bot/compare/v1.4.0...v1.4.1) (2024-06-03)
 
 
