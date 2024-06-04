@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.0](https://github.com/andresousadotpt/reminder-bot/compare/v1.8.0...v1.9.0) (2024-06-04)
+
+
+### Features
+
+* Change bot logic ([9b7d014](https://github.com/andresousadotpt/reminder-bot/commit/9b7d014a3f107752c0b181bb0b5672aef6f1ac89))
+
 ## [1.8.0](https://github.com/andresousadotpt/reminder-bot/compare/v1.7.0...v1.8.0) (2024-06-04)
 
 
