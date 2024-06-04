@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.7.0](https://github.com/andresousadotpt/reminder-bot/compare/v1.6.0...v1.7.0) (2024-06-04)
+
+
+### Features
+
+* Change release logic ([806ad9c](https://github.com/andresousadotpt/reminder-bot/commit/806ad9c4bbbbf5731393b7419b4b266bdd9c480c))
+* Change release logic ([#26](https://github.com/andresousadotpt/reminder-bot/issues/26)) ([3e548ea](https://github.com/andresousadotpt/reminder-bot/commit/3e548ea05f9ebd8aa4a810e28450a0be38eba0a3))
+
 ## [1.6.0](https://github.com/andresousadotpt/reminder-bot/compare/v1.5.0...v1.6.0) (2024-06-04)
 
 
