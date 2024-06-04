@@ -1,15 +1,45 @@
 package handler;
 
 import com.amazonaws.services.lambda.runtime.Context;
-import com.amazonaws.services.lambda.runtime.RequestHandler;
+import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import org.joda.time.DateTime;
 
 /**
  * Handler class
  */
-public final class Handler implements RequestHandler<String, String> {
+public class Handler implements RequestStreamHandler {
+
+    private static final String URL_TELEGRAM = "https://api.telegram.org/%s/sendMessage?chat_id=%s&text=\"%s\"";
+    private static final String BOT_TOKEN = System.getenv("bot_token");
+    private static final String CHAT_ID = System.getenv("chat_id");
+    private static final String HALF_MONTH_MESSAGE = System.getenv("half_month_message");
+    private static final String END_MONTH_MESSAGE = System.getenv("end_month_message");
 
     @Override
-    public String handleRequest(final String s, final Context context) {
-        return "Hello World";
+    public void handleRequest(final InputStream inputStream, final OutputStream outputStream, final Context context) throws IOException {
+        final int currentDay = DateTime.now().dayOfMonth().get();
+
+        final String finalUrl;
+
+        if (currentDay == 15) {
+            finalUrl = String.format(URL_TELEGRAM, "bot"+ BOT_TOKEN, CHAT_ID, HALF_MONTH_MESSAGE);
+        } else {
+            finalUrl = String.format(URL_TELEGRAM, "bot"+ BOT_TOKEN, CHAT_ID, END_MONTH_MESSAGE);
+        }
+
+        final URL url = new URL(finalUrl);
+        System.out.println(finalUrl);
+
+        final HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("GET");
+        final int status = con.getResponseCode();
+        System.out.println(status);
     }
 }

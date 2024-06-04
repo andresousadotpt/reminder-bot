@@ -42,3 +42,4 @@ build/
 target
 terraform/.terraform*
 terraform/terraform*
+terraform/*.tfvars
