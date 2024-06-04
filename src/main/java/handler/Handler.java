@@ -6,8 +6,8 @@ import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.net.URI;
+import java.net.http.HttpRequest;
 
 import org.joda.time.DateTime;
 
@@ -34,12 +34,9 @@ public class Handler implements RequestStreamHandler {
             finalUrl = String.format(URL_TELEGRAM, "bot"+ BOT_TOKEN, CHAT_ID, END_MONTH_MESSAGE);
         }
 
-        final URL url = new URL(finalUrl);
-        System.out.println(finalUrl);
-
-        final HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        con.setRequestMethod("GET");
-        final int status = con.getResponseCode();
-        System.out.println(status);
+        HttpRequest.newBuilder()
+                .uri(URI.create(finalUrl))
+                .GET()
+                .build();
     }
 }
