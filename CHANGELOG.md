@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/andresousadotpt/reminder-bot/compare/v1.5.0...v1.6.0) (2024-06-04)
+
+
+### Features
+
+* Add logic behind bot and Github Actions to release maven application to lambda ([#23](https://github.com/andresousadotpt/reminder-bot/issues/23)) ([4d0e707](https://github.com/andresousadotpt/reminder-bot/commit/4d0e707bbcdd2a182e89bedfc0859620d2f00211))
+
 ## [1.5.0](https://github.com/andresousadotpt/reminder-bot/compare/v1.4.2...v1.5.0) (2024-06-03)
 
 
