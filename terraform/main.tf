@@ -48,6 +48,7 @@ resource "aws_lambda_function" "reminder_bot_lambda" {
   filename      = "${path.module}/dummy.jar"
   handler       = "handler.Handler"
   runtime       = "java21"
+  timeout       = 60
 
   lifecycle {
     ignore_changes = [filename]
@@ -71,7 +72,7 @@ resource "aws_iam_role_policy_attachment" "lambda_policy_attachment" {
 resource "aws_cloudwatch_event_rule" "reminder_bot_schedule" {
   name                = "reminder-bot-schedule"
   description         = "Schedule rule for reminder bot Lambda function"
-  schedule_expression = "cron(0 0 15,28 * ? *)"
+  schedule_expression = "cron(30 20 15,28 * ? *)"
 }
 
 resource "aws_cloudwatch_event_target" "reminder_bot_target" {
