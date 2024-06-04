@@ -1,3 +1,4 @@
+name: Release to production
 on:
   push:
     branches:
@@ -7,8 +8,6 @@ permissions:
   contents: write
   pull-requests: write
 
-name: release-please
-
 jobs:
   release-please:
     runs-on: ubuntu-latest
@@ -17,22 +16,20 @@ jobs:
         with:
           token: ${{ secrets.GH_ACTIONS_TOKEN }}
           release-type: simple
-          #WILL NOT BE USING THIS JUST DEMONSTRATING HOW WE COULD CREATE A RELEASE
       - uses: actions/checkout@v4
-#        APPLY I NEED THIS ENV FOR TERRAFORM
-#  export AWS_ACCESS_KEY_ID="anaccesskey"
-#  export AWS_SECRET_ACCESS_KEY="asecretkey"
-#         these if statements ensure that a publication only occurs when
-#         a new release is created:
-#        if: ${{ steps.release.outputs.release_created }}
-#          - uses: actions/setup-node@v4
-#            with:
-#              node-version: 12
-#              registry-url: 'https://registry.npmjs.org'
-#            if: ${{ steps.release.outputs.release_created }}
-#          - run: npm ci
-#            if: ${{ steps.release.outputs.release_created }}
-#          - run: npm publish
-#            env:
-#              NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-#            if: ${{ steps.release.outputs.release_created }}
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+      - name: Package final maven application
+        run: mvn package
+      - name: Update Lambda
+        uses: kazimanzurrashid/aws-lambda-update-action@v2.0.3
+        with:
+          zip-file: target/reminder-bot.jar
+        env:
+          AWS_REGION: eu-central-1
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

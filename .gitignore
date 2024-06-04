@@ -43,3 +43,4 @@ target
 terraform/.terraform*
 terraform/terraform*
 terraform/*.tfvars
+.aws-sam
