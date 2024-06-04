@@ -12,6 +12,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
+import java.util.concurrent.CompletableFuture;
 
 import org.joda.time.DateTime;
 
@@ -38,10 +39,11 @@ public class Handler implements RequestStreamHandler {
         }
 
         // URL-encode the message text
-        final String encodedMessage = URLEncoder.encode(message, StandardCharsets.UTF_8.toString());
+        final String encodedMessage = URLEncoder.encode(message, StandardCharsets.UTF_8);
 
         // Construct the final URL
         final String finalUrl = String.format(URL_TELEGRAM, "bot" + BOT_TOKEN, CHAT_ID, encodedMessage);
+        System.out.println(finalUrl);
 
         // Build the HTTP request
         final HttpRequest request = HttpRequest.newBuilder()
@@ -52,13 +54,15 @@ public class Handler implements RequestStreamHandler {
         // Create an HttpClient instance
         final HttpClient client = HttpClient.newHttpClient();
 
-        // Send the request and get the response
-        try {
-            final HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        // Send the request asynchronously
+        final CompletableFuture<HttpResponse<String>> responseFuture = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
+
+        // Handle the response asynchronously
+        responseFuture.thenAccept(response -> {
             System.out.println("Response code: " + response.statusCode());
-        } catch (final InterruptedException e) {
+        }).exceptionally(e -> {
             e.printStackTrace();
-            Thread.currentThread().interrupt();
-        }
+            return null;
+        });
     }
 }
