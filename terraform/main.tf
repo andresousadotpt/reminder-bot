@@ -55,7 +55,10 @@ resource "aws_lambda_function" "reminder_bot_lambda" {
 
   environment {
     variables = {
-      api_key = var.bot_token
+      bot_token = var.bot_token,
+      chat_id = var.chat_id,
+      half_month_message = var.half_month_message,
+      end_month_message = var.end_month_message
     }
   }
 }
