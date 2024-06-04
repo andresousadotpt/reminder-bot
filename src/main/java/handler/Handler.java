@@ -7,7 +7,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URI;
+import java.net.URLEncoder;
+import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 
 import org.joda.time.DateTime;
 
@@ -16,7 +20,7 @@ import org.joda.time.DateTime;
  */
 public class Handler implements RequestStreamHandler {
 
-    private static final String URL_TELEGRAM = "https://api.telegram.org/%s/sendMessage?chat_id=%s&text=\"%s\"";
+    private static final String URL_TELEGRAM = "https://api.telegram.org/%s/sendMessage?chat_id=%s&text='%s'";
     private static final String BOT_TOKEN = System.getenv("bot_token");
     private static final String CHAT_ID = System.getenv("chat_id");
     private static final String HALF_MONTH_MESSAGE = System.getenv("half_month_message");
@@ -26,17 +30,35 @@ public class Handler implements RequestStreamHandler {
     public void handleRequest(final InputStream inputStream, final OutputStream outputStream, final Context context) throws IOException {
         final int currentDay = DateTime.now().dayOfMonth().get();
 
-        final String finalUrl;
-
+        final String message;
         if (currentDay == 15) {
-            finalUrl = String.format(URL_TELEGRAM, "bot"+ BOT_TOKEN, CHAT_ID, HALF_MONTH_MESSAGE);
+            message = HALF_MONTH_MESSAGE;
         } else {
-            finalUrl = String.format(URL_TELEGRAM, "bot"+ BOT_TOKEN, CHAT_ID, END_MONTH_MESSAGE);
+            message = END_MONTH_MESSAGE;
         }
 
-        HttpRequest.newBuilder()
+        // URL-encode the message text
+        final String encodedMessage = URLEncoder.encode(message, StandardCharsets.UTF_8.toString());
+
+        // Construct the final URL
+        final String finalUrl = String.format(URL_TELEGRAM, "bot" + BOT_TOKEN, CHAT_ID, encodedMessage);
+
+        // Build the HTTP request
+        final HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(finalUrl))
                 .GET()
                 .build();
+
+        // Create an HttpClient instance
+        final HttpClient client = HttpClient.newHttpClient();
+
+        // Send the request and get the response
+        try {
+            final HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            System.out.println("Response code: " + response.statusCode());
+        } catch (final InterruptedException e) {
+            e.printStackTrace();
+            Thread.currentThread().interrupt();
+        }
     }
 }
