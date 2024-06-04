@@ -25,11 +25,11 @@ jobs:
           cache: maven
       - name: Package final maven application
         run: mvn package
-      - name: Update Lambda
-        uses: kazimanzurrashid/aws-lambda-update-action@v2.0.3
+      - name: Setup AWS CLI
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          zip-file: target/reminder-bot.jar
-        env:
-          AWS_REGION: eu-central-1
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-central-1
+        run: |
+          aws lambda update-function-code --function-name reminder-bot-lambda  --zip-file fileb://./target/reminder-bot.jar
