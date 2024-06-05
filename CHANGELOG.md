@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.18.0](https://github.com/andresousadotpt/reminder-bot/compare/v1.17.0...v1.18.0) (2024-06-05)
+
+
+### Features
+
+* Add Infrastructure github action ([e1bf93f](https://github.com/andresousadotpt/reminder-bot/commit/e1bf93f90f298e9152d44afe8be3a7a6a15eb06a))
+
 ## [1.17.0](https://github.com/andresousadotpt/reminder-bot/compare/v1.16.0...v1.17.0) (2024-06-05)
 
 
