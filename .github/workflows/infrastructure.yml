@@ -41,8 +41,8 @@ jobs:
             terraform plan -var bot_token="${{secrets.BOT_TOKEN}}" \
             -var chat_id="${{secrets.CHAT_ID}}" \
             -var end_month_message="${{secrets.END_MONTH_MESSAGE}}" \
-            -var half_month_message="${{secrets.HALF_MONTH_MESSAGE}}"\
-            -detailed-exitcode -no-color -out tfplan
+            -var half_month_message="${{secrets.HALF_MONTH_MESSAGE}}" \
+            -no-color -out tfplan
 
       # Upload plan to artifacts
       - name: Publish Terraform Plan
