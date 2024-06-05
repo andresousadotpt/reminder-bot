@@ -40,7 +40,10 @@ jobs:
         run: |
           export exitcode=0
 
-            terraform plan -var-file $(pwd)/tf_$ENVIRONMENT.tfvars \
+            terraform plan -var bot_token=${{secrets.BOT_TOKEN}} \
+            -var chat_id=${{secrets.CHAT_ID}} \
+            -var end_month_message=${{secrets.END_MONTH_MESSAGE}} \
+            -var half_month_message= ${{secrets.HALF_MONTH_MESSAGE}}\
             -detailed-exitcode -no-color -out tfplan || export exitcode=$?
           
           echo "exitcode=$exitcode" >> $GITHUB_OUTPUT
